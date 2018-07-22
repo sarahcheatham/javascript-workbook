@@ -11,8 +11,10 @@ const rl = readline.createInterface({
 function rockPaperScissors(hand1, hand2) {
 
   // Write code here
+  //Making an array of choices
   const rpsArray = ['rock', 'paper', 'scissors'];
-  console.log(typeof rpsArray);
+  const hand1Choice = hand1.innerText = rpsArray;
+  console.log(hand1Choice);
 
 }
 
