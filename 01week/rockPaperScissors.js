@@ -11,9 +11,11 @@ const rl = readline.createInterface({
 function rockPaperScissors(hand1, hand2) {
 
   // Write code here
+  console.log(hand1, hand2);
 
 }
 
+//dont do anything to getPrompt function
 function getPrompt() {
   rl.question('hand1: ', (answer1) => {
     rl.question('hand2: ', (answer2) => {
