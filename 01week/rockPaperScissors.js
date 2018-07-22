@@ -12,7 +12,7 @@ function rockPaperScissors(hand1, hand2) {
 
   // Write code here
   const rpsArray = ['rock', 'paper', 'scissors'];
-  console.log(rpsArray);
+  console.log(typeof rpsArray);
 
 }
 
