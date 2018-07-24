@@ -18,6 +18,10 @@ function rockPaperScissors(hand1, hand2) {
     return 'Its a tie.'
   }
 
+//need an else if statement for all of these 
+//also need an else statement at the bottom for invalid answer
+//need to combine all the if statements below into on else if statement
+
   //if statement for if hand1 = 'rock' and hand2 = 'scissors'
   if (hand1 === rpsArray[0] && hand2 === rpsArray[2]) {
     return 'Hand 1 Wins!';
@@ -34,14 +38,11 @@ function rockPaperScissors(hand1, hand2) {
   } else {
     return 'Hand 2 Wins!';
   }
-  // const words = rpsArray[0, 1, 2];
-  // const firstLetter = words.charAt(0);
-  // console.log(firstLetter);
 }
 
 //function for player typing a word wrong
 //use charAt(0) to grab the first letter of the word
-function spellCheck(hand1, hand2){
+const spellCheck = (hand1, hand2) => {
   //return the word by the first key
   const words = rpsArray;
   const firstLetterRock = words[0].charCodeAt(0);
@@ -50,10 +51,6 @@ function spellCheck(hand1, hand2){
   const userInput = [firstLetterRock, firstLetterPaper, firstLetterScissors];
   // console.log(userInput);
   //userInput = [114, 112, 115]
-  //if statement that checks the first letter
-  if (hand1 || hand2 != userInput){
-    return 'try again';
-  } 
   
 }
 
