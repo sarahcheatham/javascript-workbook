@@ -7,6 +7,8 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+//Creating an array of choices
+const rpsArray = ['rock', 'paper', 'scissors'];
 
 function rockPaperScissors(hand1, hand2) {
 
@@ -15,30 +17,47 @@ function rockPaperScissors(hand1, hand2) {
   if (hand1 === hand2) {
     return 'Its a tie.'
   }
-  //Creating an array of choices
-  const rpsArray = ['rock', 'paper', 'scissors'];
 
   //if statement for if hand1 = 'rock' and hand2 = 'scissors'
   if (hand1 === rpsArray[0] && hand2 === rpsArray[2]) {
     return 'Hand 1 Wins!';
   }
+
   //if statement for if hand1 = 'paper' and hand2 = 'rock'
   if (hand1 === rpsArray[1] && hand2 === rpsArray[0]) {
     return 'Hand 1 Wins!';
   }
+
   //if statement for if hand1 = 'scissors' and hand2 = 'paper'
   if (hand1 === rpsArray[2] && hand2 === rpsArray[1]) {
     return 'Hand 1 Wins!';
   } else {
     return 'Hand 2 Wins!';
   }
-  
-  //player typing a word wrong
-  //use charAt(0) to grab the first letter of the word
-  const firstLetter = rpsArray[0, 1, 2];
-  console.log(firstLetter.charAt(0));
-
+  // const words = rpsArray[0, 1, 2];
+  // const firstLetter = words.charAt(0);
+  // console.log(firstLetter);
 }
+
+//function for player typing a word wrong
+//use charAt(0) to grab the first letter of the word
+function spellCheck(hand1, hand2){
+  //return the word by the first key
+  const words = rpsArray;
+  const firstLetterRock = words[0].charCodeAt(0);
+  const firstLetterPaper = words[1].charCodeAt(0);
+  const firstLetterScissors = words[2].charCodeAt(0);
+  const userInput = [firstLetterRock, firstLetterPaper, firstLetterScissors];
+  // console.log(userInput);
+  //userInput = [114, 112, 115]
+  //if statement that checks the first letter
+  if (hand1 || hand2 != userInput){
+    return 'try again';
+  } 
+  
+}
+
+spellCheck();
 
 //dont do anything to getPrompt function
 function getPrompt() {
