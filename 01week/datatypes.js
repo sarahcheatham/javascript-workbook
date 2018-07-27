@@ -6,12 +6,17 @@ const yyyy = today.getFullYear();
 Date(dd,mm,yyyy)
 //console.log(Date())
 
-const num = 15;
-const n = num.toString();
-// console.log(typeof n)
+const numToString = (num)=>{
+    return num.toString();
+}
 
-const numString = '15';
-const digit = numString.number;
+numToString(5)
+
+const stringToNum = (string) =>{
+    return string.number;
+}
+
+console.log(stringToNum('fifteen'))
 
 const sumOfTwoNumbers = (num1, num2)=> {
   return num1 + num2;
