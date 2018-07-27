@@ -10,10 +10,26 @@ const rl = readline.createInterface({
 //Creating an array of choices
 const rpsArray = ['rock', 'paper', 'scissors'];
 
+//function for player typing a word wrong
+//use charAt(0) to grab the first letter of the word
+const spellCheck = (hand1, hand2) => {
+  //return the word by the first key
+  const words = rpsArray;
+  const firstLetterRock = words[0].charCodeAt(0);
+  const firstLetterPaper = words[1].charCodeAt(0);
+  const firstLetterScissors = words[2].charCodeAt(0);
+  const userInput = [firstLetterRock, firstLetterPaper, firstLetterScissors];
+  return userInput
+  //userInput = [114, 112, 115]
+}
+
 function rockPaperScissors(hand1, hand2) {
 
-  // Write code here
+  hand1 = hand1.toLowerCase().trim();
+  hand2 = hand2.toLowerCase().trim();
+
   //if statement for a tie
+  
   if (hand1 === hand2) {
     return 'Its a tie.'
   }
@@ -39,22 +55,6 @@ function rockPaperScissors(hand1, hand2) {
     return 'Hand 2 Wins!';
   }
 }
-
-//function for player typing a word wrong
-//use charAt(0) to grab the first letter of the word
-const spellCheck = (hand1, hand2) => {
-  //return the word by the first key
-  const words = rpsArray;
-  const firstLetterRock = words[0].charCodeAt(0);
-  const firstLetterPaper = words[1].charCodeAt(0);
-  const firstLetterScissors = words[2].charCodeAt(0);
-  const userInput = [firstLetterRock, firstLetterPaper, firstLetterScissors];
-  // console.log(userInput);
-  //userInput = [114, 112, 115]
-  
-}
-
-spellCheck();
 
 //dont do anything to getPrompt function
 function getPrompt() {
