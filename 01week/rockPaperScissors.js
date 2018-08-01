@@ -16,7 +16,7 @@ const scissors = rpsArray[2];
 const isInputValid = (hand1, hand2) =>{
   //return the word by the first key
   if (hand1 && hand2 === rock || paper || scissors){
-   return hand1, hand2
+   
   } else {
     return 'please enter a valid word'
   }
