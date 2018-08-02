@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 let board = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
@@ -13,6 +14,7 @@ let board = [
 ];
 
 let playerTurn = 'X';
+
 
 function printBoard() {
   console.log('   0  1  2');
@@ -25,6 +27,7 @@ function printBoard() {
 
 function horizontalWin() {
   // Your code here
+  
 }
 
 function verticalWin() {
@@ -41,6 +44,15 @@ function checkForWin() {
 
 function ticTacToe(row, column) {
   // Your code here
+  // console.log(row, column)
+  const firstRow = board[0];
+  const middleRow = board[1];
+  const lastRow = board[2];
+  middleRow.forEach(function(item, index, array){
+    console.log("index[" + index + "]: " + item + " ")
+    console.log(typeof item)
+  })
+  
 }
 
 function getPrompt() {
