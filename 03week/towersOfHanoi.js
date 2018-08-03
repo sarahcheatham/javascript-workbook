@@ -31,6 +31,7 @@ function isLegal() {
 
 function checkForWin() {
   // Your code here
+  //test for save
 
 }
 
