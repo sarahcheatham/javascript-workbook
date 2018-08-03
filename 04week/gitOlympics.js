@@ -7,3 +7,4 @@ const printListOfOlympians = (namesArray) => {
 }
 
 printListOfOlympians(['Justin', 'Quincy', 'Sarah', 'Wade', 'Renee'])
+
