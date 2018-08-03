@@ -42,16 +42,39 @@ function checkForWin() {
   // Your code here
 }
 
+const isRowInputValid = (row) => {
+  return row === '0' || row === '1' || row === '2'
+}
+
+const isColumnInputValid = (column) => {
+  return column === '0' || column === '1' || column === '2'
+}
+
+//function to check that if input is 0, 1, or 2
+//right now if you enter an incorrect row first then it will not let you enter a column
+const isInputValid = (row, column) => {
+  return isRowInputValid(row) && isColumnInputValid(column)
+}
+
+//parent function 
 function ticTacToe(row, column) {
   // Your code here
+  console.log(board[row][column] = playerTurn)
+  console.log(isInputValid(row, column))
+
   // console.log(row, column)
-  const firstRow = board[0];
-  const middleRow = board[1];
-  const lastRow = board[2];
-  middleRow.forEach(function(item, index, array){
-    console.log("index[" + index + "]: " + item + " ")
-    console.log(typeof item)
-  })
+  // const boardLength = board.length;
+  // const firstRow = board[0];
+  // const firstRowLength = firstRow.length;
+  // const firstRowLastElement = firstRow[firstRowLength -1];
+  // // console.log(firstRowLastElement)
+  // const middleRow = board[1];
+  // const lastRow = board[2];
+  
+  // middleRow.forEach(function(item, index, array){
+  //   console.log("index[" + index + "]: " + item + " ")
+  //   console.log(typeof item)
+  // })
   
 }
 
