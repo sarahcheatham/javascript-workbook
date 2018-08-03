@@ -35,9 +35,13 @@ function checkForWin() {
 
 }
 
-function towersOfHanoi(startStack, endStack) {
+const towersOfHanoi = (startStack, endStack) => {
   // Your code here
-
+  const stackA = stacks['a'];
+  const stackB = stacks['b'];
+  const stackC = stacks['c'];
+  startStack = stackA;
+  console.log(startStack.length)
 }
 
 function getPrompt() {
