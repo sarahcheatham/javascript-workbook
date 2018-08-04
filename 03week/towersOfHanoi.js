@@ -19,14 +19,35 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
+//make the 2 tests for this function 
+const movePiece = (startStack, endStack) => {
   // Your code here
-
+  const startTemp = stacks[startStack]
+  const endTemp = stacks[endStack];
+  
+  if(isLegal(startTemp[startTemp.length-1], endTemp[endTemp.length-1])){
+    const value = startTemp.pop()
+    return endTemp.push(value);
+  } else {
+    return 'invalid move'
+  } 
+  // isLegal(startTemp, endTemp)
+  
+  
 }
 
-function isLegal() {
+const isLegal = (startTemp, endTemp) =>{
   // Your code here
-
+  // startTemp == endTemp
+  console.log(startTemp, endTemp)
+  if(endTemp===undefined || startTemp <= endTemp){
+    console.log(true)
+    return true
+  } else {
+    console.log(false)
+    return false
+  } 
+  
 }
 
 function checkForWin() {
@@ -37,11 +58,12 @@ function checkForWin() {
 
 const towersOfHanoi = (startStack, endStack) => {
   // Your code here
-  const stackA = stacks['a'];
-  const stackB = stacks['b'];
-  const stackC = stacks['c'];
-  startStack = stackA;
-  console.log(startStack.length)
+  // const stackA = stacks['a'];
+  // const stackB = stacks['b'];
+  // const stackC = stacks['c'];
+  // let startTemp = stackA.pop();
+  
+  movePiece(startStack, endStack)
 }
 
 function getPrompt() {
