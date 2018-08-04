@@ -28,12 +28,7 @@ const movePiece = (startStack, endStack) => {
   if(isLegal(startTemp[startTemp.length-1], endTemp[endTemp.length-1])){
     const value = startTemp.pop()
     return endTemp.push(value);
-  } else {
-    return 'invalid move'
   } 
-  // isLegal(startTemp, endTemp)
-  
-  
 }
 
 const isLegal = (startTemp, endTemp) =>{
