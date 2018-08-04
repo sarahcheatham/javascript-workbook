@@ -59,7 +59,7 @@ const isInputValid = (row, column) => {
 //parent function 
 function ticTacToe(row, column) {
   // Your code here
-  console.log(board[row][column] = playerTurn)
+  board[row][column] = playerTurn
   console.log(isInputValid(row, column))
 
   // console.log(row, column)
