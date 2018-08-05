@@ -21,44 +21,45 @@ function printStacks() {
 
 //make the 2 tests for this function 
 const movePiece = (startStack, endStack) => {
-  // Your code here
-  const startTemp = stacks[startStack]
-  const endTemp = stacks[endStack];
+
+  //what the array looks like before you move the last item in the key you are inputing in startStack
+  const beforeMoveArr = stacks[startStack];
+  //what the array looks like before you place the last item in the key you are inputing in endStack
+  const beforePlaceArr = stacks[endStack];
   
-  if(isLegal(startTemp[startTemp.length-1], endTemp[endTemp.length-1])){
-    const value = startTemp.pop()
-    return endTemp.push(value);
+  
+  if(isLegal(beforeMoveArr[beforeMoveArr.length-1], beforePlaceArr[beforePlaceArr.length-1])){
+    const lastNum = beforeMoveArr.pop();
+    
+    const newEndStackLength = beforePlaceArr.push(lastNum);
+    // console.log(beforePlaceArr[beforePlaceArr.length-1])
+    //returns the length of the new array where you placed the item
+    return newEndStackLength
   } 
 }
 
-const isLegal = (startTemp, endTemp) =>{
-  // Your code here
-  // startTemp == endTemp
-  console.log(startTemp, endTemp)
-  if(endTemp===undefined || startTemp <= endTemp){
+// function compares startTemp == endTemp
+const isLegal = (beforeMoveArr, beforePlaceArr) =>{
+  if(beforePlaceArr===undefined || beforeMoveArr <= beforePlaceArr){
     console.log(true)
     return true
   } else {
     console.log(false)
     return false
   } 
-  
 }
 
-function checkForWin() {
-  // Your code here
+const checkForWin = (newEndStackLength) => {
+  
+  if(stacks['b'].length === 4 || stacks['c'].length === 4){
+    return 'you have won'
+  }
   //test for save
-
 }
 
-const towersOfHanoi = (startStack, endStack) => {
-  // Your code here
-  // const stackA = stacks['a'];
-  // const stackB = stacks['b'];
-  // const stackC = stacks['c'];
-  // let startTemp = stackA.pop();
-  
+const towersOfHanoi = (startStack, endStack) => { 
   movePiece(startStack, endStack)
+  console.log(checkForWin())
 }
 
 function getPrompt() {
