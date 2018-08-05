@@ -13,6 +13,7 @@ let stacks = {
   c: []
 };
 
+
 function printStacks() {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
@@ -20,46 +21,57 @@ function printStacks() {
 }
 
 //make the 2 tests for this function 
-const movePiece = (startStack, endStack) => {
-
-  //what the array looks like before you move the last item in the key you are inputing in startStack
-  const beforeMoveArr = stacks[startStack];
-  //what the array looks like before you place the last item in the key you are inputing in endStack
-  const beforePlaceArr = stacks[endStack];
-  
-  
+const movePiece = (beforeMoveArr, beforePlaceArr) => {
   if(isLegal(beforeMoveArr[beforeMoveArr.length-1], beforePlaceArr[beforePlaceArr.length-1])){
     const lastNum = beforeMoveArr.pop();
-    
     const newEndStackLength = beforePlaceArr.push(lastNum);
-    // console.log(beforePlaceArr[beforePlaceArr.length-1])
-    //returns the length of the new array where you placed the item
     return newEndStackLength
+    //returns the length of the new array where you placed the item
   } 
 }
 
-// function compares startTemp == endTemp
-const isLegal = (beforeMoveArr, beforePlaceArr) =>{
-  if(beforePlaceArr===undefined || beforeMoveArr <= beforePlaceArr){
+// function compares beforeMoveArr last item value == beforePlaceArr last item value
+const isLegal = (beforeMoveArr, beforePlaceArr)=>{
+  if(beforePlaceArr === undefined || beforeMoveArr <= beforePlaceArr){
     console.log(true)
     return true
   } else {
     console.log(false)
     return false
-  } 
+  }
 }
 
-const checkForWin = (newEndStackLength) => {
+const legalMove = (startStack, endStack) =>{
   
+}
+
+const checkForWin = (beforeMoveArr, beforePlaceArr) => {
   if(stacks['b'].length === 4 || stacks['c'].length === 4){
-    return 'you have won'
+    console.log(true)
+    return true
+  } else {
+    console.log(false)
+    return false
   }
-  //test for save
 }
 
 const towersOfHanoi = (startStack, endStack) => { 
-  movePiece(startStack, endStack)
-  console.log(checkForWin())
+  //what the array looks like before you move the last item in the key you are inputing in startStack
+  const beforeMoveArr = stacks[startStack];
+
+  //what the array looks like before you place the last item in the key you are inputing in endStack
+  const beforePlaceArr = stacks[endStack];
+
+  if(movePiece(beforeMoveArr, beforePlaceArr)){
+    if(checkForWin(beforeMoveArr, beforePlaceArr)){
+      // return 'you won!'
+    }
+  } else {
+    // return 'please enter a valid move.'
+  }
+    // if(movePiece(beforeMoveArr, beforePlaceArr)){
+    //   checkForWin(startStack, endStack)
+    // } 
 }
 
 function getPrompt() {
