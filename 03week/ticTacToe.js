@@ -61,20 +61,6 @@ function ticTacToe(row, column) {
   // Your code here
   board[row][column] = playerTurn
   console.log(isInputValid(row, column))
-
-  // console.log(row, column)
-  // const boardLength = board.length;
-  // const firstRow = board[0];
-  // const firstRowLength = firstRow.length;
-  // const firstRowLastElement = firstRow[firstRowLength -1];
-  // // console.log(firstRowLastElement)
-  // const middleRow = board[1];
-  // const lastRow = board[2];
-  
-  // middleRow.forEach(function(item, index, array){
-  //   console.log("index[" + index + "]: " + item + " ")
-  //   console.log(typeof item)
-  // })
   
 }
 
