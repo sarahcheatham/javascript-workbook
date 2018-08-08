@@ -42,26 +42,33 @@ function checkForWin() {
   // Your code here
 }
 
-const isRowInputValid = (row) => {
-  return row === '0' || row === '1' || row === '2'
-}
-
-const isColumnInputValid = (column) => {
-  return column === '0' || column === '1' || column === '2'
-}
-
-//function to check that if input is 0, 1, or 2
-//right now if you enter an incorrect row first then it will not let you enter a column
+//function to check that if input is less than or equal to 2
 const isInputValid = (row, column) => {
-  return isRowInputValid(row) && isColumnInputValid(column)
+  for(let i = 0; i <= board.length; i++){
+    if(row <= '2' && column <= '2' ){
+      console.log(true)
+      return true
+    } else {
+      console.log(false)
+      return false
+    }
+  }
+}
+const switchPlayer = (row, column)=>{
+  if(playerTurn = 'X'){
+    playerTurn = 'O';
+  } 
 }
 
 //parent function 
 function ticTacToe(row, column) {
-  // Your code here
-  board[row][column] = playerTurn
-  console.log(isInputValid(row, column))
-  
+  board[row][column] = playerTurn;
+  if(isInputValid(row, column)){
+    console.log(true)
+    switchPlayer(playerTurn)
+  } else {
+    console.log(false)
+  }
 }
 
 function getPrompt() {
@@ -73,7 +80,6 @@ function getPrompt() {
       getPrompt();
     });
   });
-
 }
 
 
