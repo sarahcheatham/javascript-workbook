@@ -25,9 +25,17 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-function horizontalWin() {
+function horizontalWin(row, column) {
   // Your code here
-  
+  const row0 = board[0];
+  const row1 = board[1];
+  const row2 = board[2];
+  row0.forEach((item, index)=>{
+    if(row0[0]===row0[1] && row0[1]===row0[2] || row1[0]===row1[1] && row1[1]===row1[2] || row2[0]===row2[1] && row2[1]===row2[2]){
+      console.log('WINNER!')
+      return true
+    }
+  })
 }
 
 function verticalWin() {
@@ -46,28 +54,33 @@ function checkForWin() {
 const isInputValid = (row, column) => {
   for(let i = 0; i <= board.length; i++){
     if(row <= '2' && column <= '2' ){
-      console.log(true)
+      // console.log(true)
       return true
     } else {
-      console.log(false)
+      // console.log(false)
       return false
     }
   }
 }
 const switchPlayer = (row, column)=>{
-  if(playerTurn = 'X'){
+  if(playerTurn === 'X'){
     playerTurn = 'O';
-  } 
+  } else {
+    playerTurn = 'X';
+  }
 }
 
 //parent function 
 function ticTacToe(row, column) {
   board[row][column] = playerTurn;
   if(isInputValid(row, column)){
-    console.log(true)
+    // console.log(true)
     switchPlayer(playerTurn)
+    if(horizontalWin(row, column)){
+      
+    }
   } else {
-    console.log(false)
+    // console.log(false)
   }
 }
 
