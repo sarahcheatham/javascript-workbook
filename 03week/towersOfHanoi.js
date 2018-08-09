@@ -19,14 +19,16 @@ let resetStacks = {
   c: []
 };
 
-
+//function to print the board in the console
 function printStacks() {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
 
-//make the 2 tests for this function 
+//make the 2 tests for this function
+//function to take off the last number in the sequence and place that number in another stack
+//use methods pop and push to return the new value of each stack
 const movePiece = (beforeMoveArr, beforePlaceArr) => {
   const lastNum = beforeMoveArr.pop();
   const newEndStackLength = beforePlaceArr.push(lastNum);
@@ -34,6 +36,7 @@ const movePiece = (beforeMoveArr, beforePlaceArr) => {
 };
 
 // function compares beforeMoveArr last item value == beforePlaceArr last item value
+//true or false function
 const isLegal = (beforeMoveArr, beforePlaceArr)=>{
   const beforeMoveLength = beforeMoveArr[beforeMoveArr.length-1];
   const beforePlaceLength= beforePlaceArr[beforePlaceArr.length-1];
@@ -47,7 +50,9 @@ const isLegal = (beforeMoveArr, beforePlaceArr)=>{
     }
   }
 };
+
 //function to check if the input is valid not a space or the correct letter
+//true or false function
 //need to work on
 const legalMove = (beforeMoveArr, beforePlaceArr)=>{
   const beforeMoveLength = beforeMoveArr[beforeMoveArr.length-1];
@@ -59,9 +64,10 @@ const legalMove = (beforeMoveArr, beforePlaceArr)=>{
     console.log(false)
     return false
   }
-  
 }
 
+//function to check if the length of stacks b or c are 4 numbers long
+//true or false function
 const checkForWin = (beforeMoveArr, beforePlaceArr) => {
   if(stacks['b'].length === 4 || stacks['c'].length === 4){
     // console.log(true)
@@ -72,10 +78,12 @@ const checkForWin = (beforeMoveArr, beforePlaceArr) => {
   }
 };
 
+//function to reset the stacks to the orginal object
 const reset =()=>{
  stacks = resetStacks;
 }
 
+//parent function
 const towersOfHanoi = (startStack, endStack) => { 
   //what the array looks like before you move the last item in the key you are inputing in startStack
   const beforeMoveArr = stacks[startStack];
