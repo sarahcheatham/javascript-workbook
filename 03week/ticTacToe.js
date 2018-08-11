@@ -14,6 +14,9 @@ let board = [
 ];
 
 let playerTurn = 'X';
+let turn = 0;
+
+
 
 
 function printBoard() {
@@ -25,43 +28,69 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-const horizontalWin = (board, winArr)=> {
-  // console.log(board[0][0]==winArr[0][0])
+const horizontalWin = ()=> {
+  // console.log('sarah')
+  if(board[0][0]===playerTurn && board[0][1]===playerTurn && board[0][2]===playerTurn){
+    console.log(true)
+    return true
+  } else if (board[1][0]===playerTurn && board[1][1]===playerTurn && board[1][2]===playerTurn){
+    console.log(true)
+    return true
+  } else if (board[2][0]===playerTurn && board[2][1]===playerTurn && board[2][2]===playerTurn){
+    console.log(true)
+    return true
+  } else {
+    return false
+  }
   
 }
 
-function verticalWin() {
-  // Your code here
+const verticalWin= ()=>{
+  if(board[0][0]===playerTurn && board[1][0]===playerTurn && board[2][0]){
+    return true
+  } else if(board[0][1]===playerTurn && board[1][1]===playerTurn && board[2][1]===playerTurn){
+    return true
+  } else if(board[0][2]===playerTurn && board[1][2]===playerTurn && board[2][2]===playerTurn){
+    return true
+  } else {
+    return false
+  }
 }
 
-function diagonalWin() {
-  // Your code here
+const diagonalWin= ()=> {
+  if(board[0][0]===playerTurn && board[1][1]===playerTurn && board[2][2]===playerTurn){
+    return true
+  } else if(board[2][0]===playerTurn && board[1][1]===playerTurn && board[0][2]===playerTurn){
+    return true
+  } else {
+    return false
+  }
 }
 
-const checkForWin = (row, column)=> {
-  const winArr = board.slice()
-  console.log(winArr[0]==board[0], winArr[0], board[0])
-  
-  
-  // if(horizontalWin(row, column)){
-  //   return true
-  // } else {
-  //   return false
-  // }
+const checkForWin = ()=> {
+  if( horizontalWin() ){
+    console.log('HORIZONTAL WIN!!')
+    return true
+  } else if (verticalWin()) {
+    console.log('VERTICAL WIN!!')
+    return true
+  } else if(diagonalWin()) {
+    console.log('DIAGONAL WIN!!')
+    return true
+  } else {
+    return false
+  }
 }
 
 //function to check that if input is less than or equal to 2
 const isInputValid = (row, column) => {
-  for(let i = 0; i <= board.length; i++){
-    if(row <= '2' && column <= '2' ){
-      // console.log(true)
-      return true
-    } else {
-      // console.log(false)
-      return false
-    }
+  if((row === '0' || row === '1' || row === '2') && (column === '0' || column === '1' || column === '2') && (board[row][column]===' ')){
+    return true
+  } else {
+    return false
   }
 }
+
 const switchPlayer = (row, column)=>{
   if(playerTurn === 'X'){
     playerTurn = 'O';
@@ -70,18 +99,28 @@ const switchPlayer = (row, column)=>{
   }
 }
 
+
 //parent function 
 function ticTacToe(row, column) {
-  board[row][column] = playerTurn;
   if(isInputValid(row, column)){
-    switchPlayer(playerTurn)
+    board[row][column] = playerTurn;
+    turn++;
+    console.log(turn)
     if(checkForWin()){
-      console.log('Winner!')
+      board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
+      playerTurn = 'X';
+    } else {
+      switchPlayer(row, column)
     }
   } else {
-    console.log('Invalid Move')
+      console.log('Invalid Move')  
   }
 }
+
 
 function getPrompt() {
   printBoard();
