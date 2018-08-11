@@ -25,17 +25,9 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-function horizontalWin(row, column) {
-  // Your code here
-  const row0 = board[0];
-  const row1 = board[1];
-  const row2 = board[2];
-  row0.forEach((item, index)=>{
-    if(row0[0]===row0[1] && row0[1]===row0[2] || row1[0]===row1[1] && row1[1]===row1[2] || row2[0]===row2[1] && row2[1]===row2[2]){
-      console.log('WINNER!')
-      return true
-    }
-  })
+const horizontalWin = (board, winArr)=> {
+  // console.log(board[0][0]==winArr[0][0])
+  
 }
 
 function verticalWin() {
@@ -46,8 +38,16 @@ function diagonalWin() {
   // Your code here
 }
 
-function checkForWin() {
-  // Your code here
+const checkForWin = (row, column)=> {
+  const winArr = board.slice()
+  console.log(winArr[0]==board[0], winArr[0], board[0])
+  
+  
+  // if(horizontalWin(row, column)){
+  //   return true
+  // } else {
+  //   return false
+  // }
 }
 
 //function to check that if input is less than or equal to 2
@@ -74,13 +74,12 @@ const switchPlayer = (row, column)=>{
 function ticTacToe(row, column) {
   board[row][column] = playerTurn;
   if(isInputValid(row, column)){
-    // console.log(true)
     switchPlayer(playerTurn)
-    if(horizontalWin(row, column)){
-      
+    if(checkForWin()){
+      console.log('Winner!')
     }
   } else {
-    // console.log(false)
+    console.log('Invalid Move')
   }
 }
 
