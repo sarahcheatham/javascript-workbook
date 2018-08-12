@@ -154,6 +154,7 @@ if (typeof describe === 'function') {
       assert.equal(checkForWin(), false);
     });
   });
+  //test to check if the board resets
   describe('#towersOfHanoi()', () => {
     it('should be able to reset the board', () => {
       stacks = {
@@ -164,11 +165,11 @@ if (typeof describe === 'function') {
       assert.equal(reset());
     });
   });
+  //not sure how to write this test
+  //test to check that you cannot input numbers 
   describe('#towersOfHanoi()', () => {
-    it('should not allow a move if input is invalid', () => {
-      towersOfHanoi('a', '5');
-      assert.equal(false);
-    });
+    
+    assert.equal(towersOfHanoi('5', '5'), undefined);
   });
 
 } else {
