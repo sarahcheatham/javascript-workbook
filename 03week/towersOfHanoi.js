@@ -58,10 +58,10 @@ const legalMove = (beforeMoveArr, beforePlaceArr)=>{
   const beforeMoveLength = beforeMoveArr[beforeMoveArr.length-1];
   const beforePlaceLength = beforePlaceArr[beforePlaceArr.length-1];
   if(beforeMoveArr === null && beforePlaceArr === null || beforeMoveLength === undefined && beforePlaceLength === undefined){
-    console.log(true)
+    // console.log(true)
     return true
   } else {
-    console.log(false)
+    // console.log(false)
     return false
   }
 }
@@ -83,21 +83,27 @@ const reset =()=>{
  stacks = resetStacks;
 }
 
+
 //parent function
 const towersOfHanoi = (startStack, endStack) => { 
-  //what the array looks like before you move the last item in the key you are inputing in startStack
-  const beforeMoveArr = stacks[startStack];
-  //what the array looks like before you place the last item in the key you are inputing in endStack
-  const beforePlaceArr = stacks[endStack];
-  if(isLegal(beforeMoveArr, beforePlaceArr)){
-    movePiece(beforeMoveArr, beforePlaceArr);
-    if(checkForWin(beforeMoveArr, beforePlaceArr)){
-      console.log('WINNER!');
-      console.log(reset())
-    } 
+  if((startStack === 'a' || startStack === 'b' || startStack === 'c') && (endStack === 'a' || endStack === 'b' || endStack === 'c')){
+    //what the array looks like before you move the last item in the key you are inputing in startStack
+    const beforeMoveArr = stacks[startStack];
+    //what the array looks like before you place the last item in the key you are inputing in endStack
+    const beforePlaceArr = stacks[endStack];
+    if(isLegal(beforeMoveArr, beforePlaceArr)){
+      movePiece(beforeMoveArr, beforePlaceArr);
+      if(checkForWin(beforeMoveArr, beforePlaceArr)){
+        console.log('WINNER!');
+        reset()
+      } 
+    } else {
+      console.log('INVALID MOVE');
+    }
   } else {
-    console.log('INVALID MOVE');
+    console.log('INVALID INPUT')
   }
+  
 
 };
 
@@ -146,6 +152,22 @@ if (typeof describe === 'function') {
       assert.equal(checkForWin(), true);
       stacks = { a: [1], b: [4, 3, 2], c: [] };
       assert.equal(checkForWin(), false);
+    });
+  });
+  describe('#towersOfHanoi()', () => {
+    it('should be able to reset the board', () => {
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      assert.equal(reset());
+    });
+  });
+  describe('#towersOfHanoi()', () => {
+    it('should not allow a move if input is invalid', () => {
+      towersOfHanoi('a', '5');
+      assert.equal(false);
     });
   });
 
