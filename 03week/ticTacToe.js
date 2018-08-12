@@ -116,6 +116,11 @@ function ticTacToe(row, column) {
     }
     if(turn === 9){
       console.log('GAME OVER')
+      board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
     }
   } else {
       console.log('INVALID MOVE')  
