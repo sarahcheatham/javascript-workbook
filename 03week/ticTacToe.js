@@ -14,10 +14,8 @@ let board = [
 ];
 
 let playerTurn = 'X';
+
 let turn = 0;
-
-
-
 
 function printBoard() {
   console.log('   0  1  2');
@@ -116,8 +114,11 @@ function ticTacToe(row, column) {
     } else {
       switchPlayer(row, column)
     }
+    if(turn === 9){
+      console.log('GAME OVER')
+    }
   } else {
-      console.log('Invalid Move')  
+      console.log('INVALID MOVE')  
   }
 }
 
