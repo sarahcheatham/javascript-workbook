@@ -102,20 +102,10 @@ const weatherStates = weather.map((item, index)=>{
 console.log(weatherStates.filter(unique))
 
 // //find the id of the object in weather that has a min_temp of 15.915
-const idealTemp = weather.filter((item, index, arr)=>{
-    return (item.min_temp >= 15.915)
+const idealTemp = weather.filter((item, index)=>{
+    return (item.min_temp === 15.915)
 }).map((item)=>{
     return item.id;
 })
 console.log(idealTemp)
 
-//why does this not work????
-// const idealTemp = weather.find((item, index)=>{
-//     if(item.min_temp === 15.915){
-//         return item.id
-//     }
-    
-// })
-
-// console.log(idealTemp)
-// console.log(weather[0].min_temp)
