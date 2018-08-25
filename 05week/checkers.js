@@ -127,14 +127,12 @@ class Game {
         let jumpedColumn = destinationColumn - sourceColumn > 0 ? sourceColumn + 1 : destinationColumn + 1;
         this.board.grid[jumpedRow][jumpedColumn] = null;
         let poppedChecker = this.board.checkers.pop();
-        console.log(poppedChecker)
-        let checkerCount = poppedChecker.symbol;
+        // console.log(poppedChecker)
         let blackJumpedChecker = 0;
         let redJumpedChecker = 0;
         if(this.singleJump(source, destination)){
-          console.log(checkerCount)
-          console.log(`Jumped Black Count: ${blackJumpedChecker}`);
-          console.log(`Jumped Red Count: ${redJumpedChecker}`);
+          console.log(`Jumped Red Count: ${redJumpedChecker++}`)
+          console.log(`Jumped Black Count: ${blackJumpedChecker++}`) 
         }
       } 
     }
@@ -150,23 +148,25 @@ class Game {
   }
   nonScoringMove(source, destination){
     const move = Math.abs(source - destination) === 9 || Math.abs(source - destination) === 11;
-    console.log(move)
   }
   singleJump(source, destination){
     const single = Math.abs(source - destination) === 18 || Math.abs(source - destination) === 22;
-    console.log(single)
-    let poppedChecker = this.board.checkers.pop();
-    let checkerCount = poppedChecker.symbol;
+    const poppedChecker = this.board.checkers.pop();
     let blackJumpedChecker = 0;
     let redJumpedChecker = 0;
-    if(checkerCount === 'B'){
-      blackJumpedChecker++
-      console.log(`Jumped Black Count: ${blackJumpedChecker}`)
-    } 
-    if(checkerCount === 'R'){
-      redJumpedChecker++
-      console.log(`Jumped Red Count: ${redJumpedChecker}`)
+    for(let i = 0; i < 24; i++){
+      if(poppedChecker.symbol === 'B'){
+        blackJumpedChecker++
+        console.log(`Jumped Black Count: ${blackJumpedChecker++}`) 
+      } else if(checkerCount === 'R'){
+        redJumpedChecker++
+        console.log(`Jumped Red Count: ${redJumpedChecker++}`)
+      }
     }
+    // if(checkerCount === 'R'){
+    //   redJumpedChecker++
+    //   console.log(`Jumped Red Count: ${redJumpedChecker}`)
+    // }
   }
 }
 
