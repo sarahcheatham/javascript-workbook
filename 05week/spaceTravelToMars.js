@@ -10,38 +10,59 @@ let jobTypes = {
 };
 
 // Your code here
-//CrewMember class will have a name, job, special skill and ship
-//class CrewMember {
-  //constructor(name, job, specialSkill)
-  //name:
-  //job:
-  //specialSkill:
-  //ship: null
-//}
 
-//enterShip(ship) {
-  //this.ship = ship;
-  //ship.crew.push(this)
-  
+//CrewMember class will have a name, job, special skill and ship
+class CrewMember {
+  constructor(name, job, specialSkill, ship){
+    this.name = name,
+    this.job = job,
+    this.specialSkill = specialSkill,
+    this.ship = null
+  }
+  enterShip(newShip){
+    newShip.addCrew(this);
+    this.ship = newShip
+  }
+}
+
+// enterShip(ship) {
+//   this.ship = ship;
+//   ship.crew.push(this)
+// }
+
 //once you assign a crew member to the Ship class it will add the crew member to the crew array
 //ship that the crew
 
 //Ship class will pass into the CrewMember class
 //Ship class will take in a name, type, ability, and empty crew[]
-//class Ship{
-  //constructor(name, type, ability)
-  //this.name = name;
-  //this.type = type;
-  //this.ability = ability;
-  //this.crew = []
-//}
-
-
+class Ship{
+  constructor(name, type, ability){
+    this.name = name,
+    this.type = type,
+    this.ability = ability,
+    this.crew = []
+  }
+  addCrew(crewMember){
+    this.crew.push(crewMember)
+  }
+  missionStatement(){
+    if(this.crew.length > 0){
+      return this.ability
+    }else{
+      return 'Can\'t perform mission yet!' == 'Can\'t perform a mission yet.'
+    }
+  }
+}
 
 //missionStatement function
 //a crew member cannot start a mission until you assign it to a ship 
 //once you assign it to a ship it should return the ship's mission statement
-//
+
+let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+
+let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+
+crewMember1.enterShip(mav)
 
 //tests
 //build a class called CrewMember
