@@ -49,7 +49,7 @@ class Ship{
     if(this.crew.length > 0){
       return this.ability
     }else{
-      return 'Can\'t perform mission yet!' == 'Can\'t perform a mission yet.'
+      return 'Can\'t perform a mission yet.'
     }
   }
 }
@@ -96,7 +96,7 @@ if (typeof describe === 'function'){
       assert.equal(mav.ability, 'Ascend into low orbit');
       assert.equal(mav.crew.length, 0);
     });
-    //method issionStatement() in the Ship class 
+    //method missionStatement() in the Ship class 
     //calls method by ship names mav and hermes
     it('can return a mission statement correctly', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
