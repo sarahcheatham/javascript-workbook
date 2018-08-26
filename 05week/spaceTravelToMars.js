@@ -62,7 +62,15 @@ let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
 
 let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
 
+let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
+
+let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
+
 crewMember1.enterShip(mav)
+crewMember2.enterShip(hermes)
+console.log(mav)
+console.log(hermes)
+
 
 //tests
 //build a class called CrewMember
