@@ -122,17 +122,16 @@ class Game {
       const destinationColumn = parseInt(destination.charAt(1));
       this.board.grid[destinationRow][destinationColumn] = this.board.grid[sourceRow][sourceColumn];
       this.board.grid[sourceRow][sourceColumn] = null;
-      if(Math.abs(destinationRow - sourceRow)===2 || Math.abs(destinationRow - sourceRow)===4){
+      console.log(game.board.checkers.length)
+      if(Math.abs(destinationRow - sourceRow)===2 ){
         let jumpedRow = destinationRow - sourceRow > 0 ? sourceRow + 1 : destinationRow + 1;
         let jumpedColumn = destinationColumn - sourceColumn > 0 ? sourceColumn + 1 : destinationColumn + 1;
         this.board.grid[jumpedRow][jumpedColumn] = null;
         let poppedChecker = this.board.checkers.pop();
-        // console.log(poppedChecker)
         let blackJumpedChecker = 0;
         let redJumpedChecker = 0;
         if(this.singleJump(source, destination)){
-          console.log(`Jumped Red Count: ${redJumpedChecker++}`)
-          console.log(`Jumped Black Count: ${blackJumpedChecker++}`) 
+          
         }
       } 
     }
@@ -157,11 +156,8 @@ class Game {
     for(let i = 0; i < 24; i++){
       if(poppedChecker.symbol === 'B'){
         blackJumpedChecker++
-        console.log(`Jumped Black Count: ${blackJumpedChecker++}`) 
-      } else if(checkerCount === 'R'){
-        redJumpedChecker++
-        console.log(`Jumped Red Count: ${redJumpedChecker++}`)
-      }
+        // console.log(`Jumped Black Count: ${blackJumpedChecker++}`) 
+      } 
     }
     // if(checkerCount === 'R'){
     //   redJumpedChecker++
