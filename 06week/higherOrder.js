@@ -2,17 +2,47 @@
 
 const assert = require('assert');
 
-function forEach(arr, callback) {
-  // Your code here
+const arr = [1, 2, 3];
+
+const testArr = [1, 2, 3, 4];
+
+//function that takes an array of items and a function that runs the function arr.length number of times
+const forEach = (arr, callback)=>{
+  for(let i = 0; i < arr.length; i++){
+    console.log(arr[i]);
+    if(callback){
+      console.log('callback present')
+      callback(arr[i])
+    }
+  }
 }
 
-function map(arr, callback) {
-  // Your code here
+//function that takes an array of items and a function that returns an array with each item manipulated by that function
+const map = (arr, callback)=>{
+  const newMap = [];
+  for(let i = 0; i < arr.length; i++){
+    newMap.push(callback(arr[i]));
+  }
+  return newMap
 }
+map(arr,(item)=>{
+  return item
+})
 
-function filter(arr, callback) {
-  // Your code here
+
+//function that takes an array of items and a function that returns an array with only the items that return true in the function
+const filter = (arr, callback)=>{
+  const filteredArr = [];
+  for(let i = 0; i < arr.length; i++){
+    if(callback(arr[i])){
+      filteredArr.push(arr[i]);
+    }
+  }
+  return filteredArr
 }
+filter(testArr, (num)=>{
+  return num % 2 === 0
+})
 
 function some(arr, callback) {
   // Your code here
