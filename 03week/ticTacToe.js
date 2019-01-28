@@ -101,6 +101,7 @@ const switchPlayer = (row, column)=>{
 //parent function 
 function ticTacToe(row, column) {
   if(isInputValid(row, column)){
+    console.log(typeof row, typeof column)
     board[row][column] = playerTurn;
     turn++;
     console.log(turn)
