@@ -39,8 +39,6 @@ const generateHint = (solution, guess)=> {
     for(let j = 0; j < guessArray.length; j++){
       if(i === j && solutionArray[i] === guessArray[j]){
         correctLetterLocations++;
-        // const red = colors.red(solutionArray[i]);
-        // console.log(red)
         solutionArray[i] = null;
         console.log(solutionArray)
       } else if(solutionArray[i] === guessArray[j] && i !== j){
