@@ -38,11 +38,12 @@ const generateHint = (solution, guess)=> {
   for(let i = 0; i < solutionArray.length; i++){
     for(let j = 0; j < guessArray.length; j++){
       if(i === j && solutionArray[i] === guessArray[j]){
-        solutionArray[i] = null;
         correctLetterLocations++;
-        const red = colors.red(solutionArray[i]);
-        console.log(red)
-      } else if(solutionArray[i] === guessArray[j]){
+        // const red = colors.red(solutionArray[i]);
+        // console.log(red)
+        solutionArray[i] = null;
+        console.log(solutionArray)
+      } else if(solutionArray[i] === guessArray[j] && i !== j){
         const letterIndex = guessArray.indexOf(solutionArray[i]);
         targetIndex.push(letterIndex)
         correctLetters++;
@@ -61,7 +62,7 @@ const mastermind = (guess)=> {
   } else {
     const hint = generateHint(solution, guess);
     board.push(`${guess} ${hint}`)
-    console.log(board)
+    console.log(`board:${board}`)
   }
   console.log(typeof solution)
 }
