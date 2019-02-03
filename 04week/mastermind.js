@@ -31,36 +31,36 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = (solution, guess)=> {
+const generateHint = (guess, solution)=> {
   const solutionArray = solution.split('');
   const guessArray = guess.split('');
   const targetIndex = [];
-  for(let i = 0; i < solutionArray.length; i++){
-    for(let j = 0; j < guessArray.length; j++){
-      if(i === j && solutionArray[i] === guessArray[j]){
+  for(let i = 0; i < 5; i++){
+    for(let j = 0; j < 5; j++){
+      if((i === j) && (solutionArray[i] === guessArray[j]) && (solution[i] !== undefined)){
+        console.log(solutionArray[i], guessArray[j])
         correctLetterLocations++;
         solutionArray[i] = null;
-        console.log(solutionArray)
-      } else if(solutionArray[i] === guessArray[j] && i !== j){
-        const letterIndex = guessArray.indexOf(solutionArray[i]);
-        targetIndex.push(letterIndex)
+      } else if((solutionArray[i] === guessArray[j]) && (solution[i] !== undefined)){
         correctLetters++;
-        const hypenLetters = `-${solutionArray[i]}-`;
-        // console.log(hypenLetters)
-        return hypenLetters
+        solutionArray[i] = null;
       }
     }
   }
+  console.log(`${correctLetterLocations} - ${correctLetters}`)
+  return `${correctLetterLocations} - ${correctLetters}`
 }
 
-const mastermind = (guess)=> {
+const mastermind = (guess, solution)=> {
   solution = 'abcd'; // Comment this out to generate a random solution
   if(guess === solution){
     console.log('You guessed it!');
+    return 'You guessed it!'
   } else {
-    const hint = generateHint(solution, guess);
-    board.push(`${guess} ${hint}`)
-    console.log(`board:${board}`)
+    const hint = generateHint(guess, solution);
+    // board.push(`${guess} ${hint}`)
+    // console.log(`board:${board}`)
+    return hint
   }
   console.log(typeof solution)
 }
@@ -99,7 +99,6 @@ if (typeof describe === 'function') {
   });
 
 } else {
-
   generateSolution();
   getPrompt();
 }
