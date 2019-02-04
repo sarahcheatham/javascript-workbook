@@ -47,8 +47,8 @@ const generateHint = (guess, solution)=> {
       }
     }
   }
-  console.log(`${correctLetterLocations} - ${correctLetters}`)
-  return `${correctLetterLocations} - ${correctLetters}`
+  console.log(`${correctLetterLocations}-${correctLetters}`)
+  return `${correctLetterLocations}-${correctLetters}`
 }
 
 const mastermind = (guess, solution)=> {
@@ -58,11 +58,11 @@ const mastermind = (guess, solution)=> {
     return 'You guessed it!'
   } else {
     const hint = generateHint(guess, solution);
-    // board.push(`${guess} ${hint}`)
+    board.push(`${guess} ${hint}`)
     // console.log(`board:${board}`)
-    return hint
+    console.log(board.length, hint[0])
   }
-  console.log(typeof solution)
+  // console.log(typeof solution)
 }
 
 
