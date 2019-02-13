@@ -8,13 +8,46 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
-  // Your code here
+class Checker {
+  constructor(color){
+    if(color === 'white'){
+      this.symbol = String.fromCharCode(0x125CB);
+    } else {
+      this.symbol = String.fromCharCode(0x125CF);
+    }
+  }
 }
 
 class Board {
   constructor() {
-    this.grid = []
+    this.checkers = [];
+    this.grid = [];
+  }
+  createCheckers(){
+    const whitePositions = [
+      [0, 1], [0, 3], [0, 5], [0, 7],
+      [1, 0], [1, 2], [1, 4], [1, 6],
+      [2, 1], [2, 3], [2, 5], [2, 7]
+    ];
+    for(let i = 0; i < 12; i++){
+      const whiteRow = whitePositions[i][0];
+      const whiteColumn = whitePositions[i][1];
+      const whiteChecker = new Checker('white');
+      this.checkers.push(whiteChecker);
+      this.grid[whiteRow][whiteColumn] = whiteChecker;
+    }
+    const blackPositions = [
+      [5, 0], [5, 2], [5, 4], [5, 6],
+      [6, 1], [6, 3], [6, 5], [6, 7],
+      [7, 0], [7, 2], [7, 4], [7, 6]
+    ];
+    for(let i = 0; i < 12; i++){
+      const blackRow = blackPositions[i][0];
+      const blackColumn = blackPositions[i][1];
+      const blackChecker = new Checker('black');
+      this.checkers.push(blackChecker);
+      this.grid[blackRow][blackColumn] = blackChecker;
+    }
   }
   // method that creates an 8x8 array, filled with null values
   createGrid() {
@@ -51,8 +84,16 @@ class Board {
     }
     console.log(string);
   }
-
-  // Your code here
+  selectChecker(row, column){
+    // row = this.board.grid[row];
+    // column = this.grid[1];
+    // console.log('positions:',this.checkers)
+    // console.log("column", column)
+  }
+  killChecker(position){
+    console.log("KILLED")
+    this.checkers.splice(position, 1)
+  }
 }
 
 class Game {
@@ -61,6 +102,28 @@ class Game {
   }
   start() {
     this.board.createGrid();
+    this.board.createCheckers();
+  }
+  
+  moveChecker(start, end){
+    const startRow = parseInt(start.charAt(0));
+    const startColumn = parseInt(start.charAt(1));
+    const endRow = parseInt(end.charAt(0));
+    const endColumn = parseInt(end.charAt(1));
+    // console.log('startRow:', startRow, 'startColumn:', startColumn)
+    // console.log('endRow:', endRow, 'endColumn:', endColumn)
+    this.board.grid[endRow][endColumn] = this.board.grid[startRow][startColumn];
+    this.board.grid[startRow][startColumn] = null;
+    if(Math.abs(endRow - startRow) === 2){
+      // console.log("start:", start, "end:", end)
+      let midpointRow = (startRow + endRow) / 2;
+      let midpointColumn = (startColumn + endColumn) / 2;
+      let killPoint = this.board.grid[midpointRow][midpointColumn];
+      console.log("killPoint:", killPoint)
+      // let position = this.board.grid[killPoint];
+      this.board.grid[midpointRow][midpointColumn] = null;
+      this.board.killChecker();
+    }
   }
 }
 
