@@ -7,12 +7,21 @@ const arr = [1, 2, 3];
 const testArr = [1, 2, 3, 4];
 
 //function that takes an array of items and a function that runs the function arr.length number of times
+// const forEach = (arr, callback)=>{
+//   for(let i = 0; i < arr.length; i++){
+//     console.log(arr[i]);
+//     if(callback){
+//       console.log('callback present')
+//       callback(arr[i])
+//     }
+//   }
+// }
 const forEach = (arr, callback)=>{
   for(let i = 0; i < arr.length; i++){
-    console.log(arr[i]);
+    const item = arr[i];
     if(callback){
-      console.log('callback present')
-      callback(arr[i])
+      console.log("callback present", item)
+      callback(item)
     }
   }
 }
