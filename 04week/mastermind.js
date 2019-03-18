@@ -11,8 +11,8 @@ const rl = readline.createInterface({
 let board = [];
 let solution = 'abcd';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-let correctLetterLocations = 0;
-let correctLetters = 0;
+// let correctLetterLocations = 0;
+// let correctLetters = 0;
 
 function printBoard() {
   for (let i = 0; i < board.length; i++) {
@@ -34,20 +34,25 @@ function getRandomInt(min, max) {
 const generateHint = (guess, solution)=> {
   const solutionArray = solution.split('');
   const guessArray = guess.split('');
-  const targetIndex = [];
-  for(let i = 0; i < 5; i++){
-    for(let j = 0; j < 5; j++){
-      if((i === j) && (solutionArray[i] === guessArray[j]) && (solution[i] !== undefined)){
-        console.log(solutionArray[i], guessArray[j])
+  let correctLetterLocations = 0;
+  let correctLetters = 0;
+  let targetIndex = 0;
+  for(let i = 0; i < solutionArray.length; i++){
+    if(solutionArray[i] === guessArray[i]){
         correctLetterLocations++;
         solutionArray[i] = null;
-      } else if((solutionArray[i] === guessArray[j]) && (solution[i] !== undefined)){
-        correctLetters++;
-        solutionArray[i] = null;
-      }
+    } 
+    for(let j = 0; j < solutionArray.length; j++){
+        targetIndex = solutionArray.indexOf(guessArray[j]);
+        console.log(solutionArray[i], solutionArray[j], solutionArray[i] === solutionArray[j])
+        if(targetIndex > -1 && i === j){
+          correctLetters++;
+          solutionArray[j] = null;
+        }else if(solutionArray[i] === solutionArray[j] && solutionArray[i] !== null){
+          correctLetters-1
+        }
     }
   }
-  console.log(`${correctLetterLocations}-${correctLetters}`)
   return `${correctLetterLocations}-${correctLetters}`
 }
 
@@ -56,13 +61,13 @@ const mastermind = (guess, solution)=> {
   if(guess === solution){
     console.log('You guessed it!');
     return 'You guessed it!'
-  } else {
-    const hint = generateHint(guess, solution);
-    board.push(`${guess} ${hint}`)
-    // console.log(`board:${board}`)
-    console.log(board.length, hint[0])
+  } else{
+      console.log("guess:", guess);
+      console.log("solution:", solution)
+      const hint = generateHint(guess, solution);
+      board.push(`${hint}`)
+      return `${board.length}-${hint}`
   }
-  // console.log(typeof solution)
 }
 
 
