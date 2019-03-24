@@ -31,6 +31,7 @@ class Board {
     ];
     for(let i = 0; i < 12; i++){
       const whiteRow = whitePositions[i][0];
+      console.log("whiteRow:", whiteRow)
       const whiteColumn = whitePositions[i][1];
       const whiteChecker = new Checker('white');
       this.checkers.push(whiteChecker);
