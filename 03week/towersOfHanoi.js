@@ -98,7 +98,7 @@ const towersOfHanoi = (startStack, endStack) => {
         reset()
       } 
     } else {
-      console.log('INVALID MOVE');
+      return false
     }
   } else {
     console.log('INVALID INPUT')
