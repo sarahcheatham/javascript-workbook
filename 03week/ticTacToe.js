@@ -27,7 +27,6 @@ function printBoard() {
 }
 
 const horizontalWin = ()=> {
-  // console.log('sarah')
   if(board[0][0]===playerTurn && board[0][1]===playerTurn && board[0][2]===playerTurn){
     console.log(true)
     return true
