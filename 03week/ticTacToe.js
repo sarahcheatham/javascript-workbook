@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 let board = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
@@ -13,6 +14,8 @@ let board = [
 ];
 
 let playerTurn = 'X';
+
+let turn = 0;
 
 function printBoard() {
   console.log('   0  1  2');
@@ -23,25 +26,107 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-function horizontalWin() {
-  // Your code here
+const horizontalWin = ()=> {
+  if(board[0][0]===playerTurn && board[0][1]===playerTurn && board[0][2]===playerTurn){
+    console.log(true)
+    return true
+  } else if (board[1][0]===playerTurn && board[1][1]===playerTurn && board[1][2]===playerTurn){
+    console.log(true)
+    return true
+  } else if (board[2][0]===playerTurn && board[2][1]===playerTurn && board[2][2]===playerTurn){
+    console.log(true)
+    return true
+  } else {
+    return false
+  }
+  
 }
 
-function verticalWin() {
-  // Your code here
+const verticalWin= ()=>{
+  if(board[0][0]===playerTurn && board[1][0]===playerTurn && board[2][0]){
+    return true
+  } else if(board[0][1]===playerTurn && board[1][1]===playerTurn && board[2][1]===playerTurn){
+    return true
+  } else if(board[0][2]===playerTurn && board[1][2]===playerTurn && board[2][2]===playerTurn){
+    return true
+  } else {
+    return false
+  }
 }
 
-function diagonalWin() {
-  // Your code here
+const diagonalWin= ()=> {
+  if(board[0][0]===playerTurn && board[1][1]===playerTurn && board[2][2]===playerTurn){
+    return true
+  } else if(board[2][0]===playerTurn && board[1][1]===playerTurn && board[0][2]===playerTurn){
+    return true
+  } else {
+    return false
+  }
 }
 
-function checkForWin() {
-  // Your code here
+const checkForWin = ()=> {
+  if( horizontalWin() ){
+    console.log('HORIZONTAL WIN!!')
+    return true
+  } else if (verticalWin()) {
+    console.log('VERTICAL WIN!!')
+    return true
+  } else if(diagonalWin()) {
+    console.log('DIAGONAL WIN!!')
+    return true
+  } else {
+    return false
+  }
 }
 
+//function to check that if input is less than or equal to 2
+const isInputValid = (row, column) => {
+  if((row === '0' || row === '1' || row === '2') && (column === '0' || column === '1' || column === '2') && (board[row][column]===' ')){
+    return true
+  } else {
+    return false
+  }
+}
+
+const switchPlayer = (row, column)=>{
+  if(playerTurn === 'X'){
+    playerTurn = 'O';
+  } else {
+    playerTurn = 'X';
+  }
+}
+
+
+//parent function 
 function ticTacToe(row, column) {
-  // Your code here
+  if(isInputValid(row, column)){
+    console.log(typeof row, typeof column)
+    board[row][column] = playerTurn;
+    turn++;
+    console.log(turn)
+    if(checkForWin()){
+      board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
+      playerTurn = 'X';
+    } else {
+      switchPlayer(row, column)
+    }
+    if(turn === 9){
+      console.log('GAME OVER')
+      board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
+    }
+  } else {
+      console.log('INVALID MOVE')  
+  }
 }
+
 
 function getPrompt() {
   printBoard();
@@ -52,7 +137,6 @@ function getPrompt() {
       getPrompt();
     });
   });
-
 }
 
 
