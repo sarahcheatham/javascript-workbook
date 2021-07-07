@@ -13,31 +13,99 @@ let stacks = {
   c: []
 };
 
+let resetStacks = {
+  a: [4, 3, 2, 1],
+  b: [],
+  c: []
+};
+
+//function to print the board in the console
 function printStacks() {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
+//make the 2 tests for this function
+//function to take off the last number in the sequence and place that number in another stack
+//use methods pop and push to return the new value of each stack
+const movePiece = (beforeMoveArr, beforePlaceArr) => {
+  const lastNum = beforeMoveArr.pop();
+  const newEndStackLength = beforePlaceArr.push(lastNum);
+  return newEndStackLength
+};
 
+// function compares beforeMoveArr last item value == beforePlaceArr last item value
+//true or false function
+const isLegal = (beforeMoveArr, beforePlaceArr)=>{
+  const beforeMoveLength = beforeMoveArr[beforeMoveArr.length-1];
+  const beforePlaceLength= beforePlaceArr[beforePlaceArr.length-1];
+  if(legalMove(beforeMoveArr, beforePlaceArr)===false){
+    if(beforePlaceLength === undefined || beforeMoveLength <= beforePlaceLength){
+      // console.log(true)
+      return true
+    } else {
+      // console.log(false)
+      return false
+    }
+  }
+};
+
+//function to check if the input is valid not a space or the correct letter
+//true or false function
+//need to work on
+const legalMove = (beforeMoveArr, beforePlaceArr)=>{
+  const beforeMoveLength = beforeMoveArr[beforeMoveArr.length-1];
+  const beforePlaceLength = beforePlaceArr[beforePlaceArr.length-1];
+  if(beforeMoveArr === null && beforePlaceArr === null || beforeMoveLength === undefined && beforePlaceLength === undefined){
+    // console.log(true)
+    return true
+  } else {
+    // console.log(false)
+    return false
+  }
 }
 
-function isLegal() {
-  // Your code here
+//function to check if the length of stacks b or c are 4 numbers long
+//true or false function
+const checkForWin = (beforeMoveArr, beforePlaceArr) => {
+  if(stacks['b'].length === 4 || stacks['c'].length === 4){
+    // console.log(true)
+    return true
+  } else {
+    // console.log(false)
+    return false
+  }
+};
 
+//function to reset the stacks to the orginal object
+const reset =()=>{
+ stacks = resetStacks;
 }
 
-function checkForWin() {
-  // Your code here
 
-}
+//parent function
+const towersOfHanoi = (startStack, endStack) => { 
+  if((startStack === 'a' || startStack === 'b' || startStack === 'c') && (endStack === 'a' || endStack === 'b' || endStack === 'c')){
+    //what the array looks like before you move the last item in the key you are inputing in startStack
+    const beforeMoveArr = stacks[startStack];
+    //what the array looks like before you place the last item in the key you are inputing in endStack
+    const beforePlaceArr = stacks[endStack];
+    if(isLegal(beforeMoveArr, beforePlaceArr)){
+      movePiece(beforeMoveArr, beforePlaceArr);
+      if(checkForWin(beforeMoveArr, beforePlaceArr)){
+        console.log('WINNER!');
+        reset()
+      } 
+    } else {
+      return false
+    }
+  } else {
+    console.log('INVALID INPUT')
+  }
+  
 
-function towersOfHanoi(startStack, endStack) {
-  // Your code here
-
-}
+};
 
 function getPrompt() {
   printStacks();
@@ -85,6 +153,23 @@ if (typeof describe === 'function') {
       stacks = { a: [1], b: [4, 3, 2], c: [] };
       assert.equal(checkForWin(), false);
     });
+  });
+  //test to check if the board resets
+  describe('#towersOfHanoi()', () => {
+    it('should be able to reset the board', () => {
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      assert.equal(reset());
+    });
+  });
+  //not sure how to write this test
+  //test to check that you cannot input numbers 
+  describe('#towersOfHanoi()', () => {
+    
+    assert.equal(towersOfHanoi('5', '5'), undefined);
   });
 
 } else {
